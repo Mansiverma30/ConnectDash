@@ -15,9 +15,41 @@ ConnectDash is an automated social media investigation tool designed to enhance 
 ## Technologies Used
 
 - **Frontend**: React, TypeScript, Tailwind CSS, ShadcnUI
-- **Backend**: [Specify backend technology if applicable]
-- **APIs**: [List any APIs used, e.g., Twitter API, Instagram Graph API]
-- **Libraries**: react-slick for carousel, charting libraries for data visualization
+- **Data Source**: Mock data for simulating social media data and interactions
+- **Libraries**:
+  - `@headlessui/react`: ^2.1.5
+  - `@heroicons/react`: ^2.1.5
+  - `@material-tailwind/react`: ^2.1.10
+  - `autoprefixer`: ^10.4.20
+  - `axios`: ^1.7.7
+  - `chart.js`: ^4.4.4
+  - `class-variance-authority`: ^0.7.0
+  - `clsx`: ^2.1.1
+  - `d3-cloud`: ^1.2.7
+  - `headlessui`: ^0.0.0
+  - `html2canvas`: ^1.4.1
+  - `jspdf`: ^2.5.1
+  - `leaflet`: ^1.9.4
+  - `lucide-react`: ^0.436.0
+  - `pica`: ^9.0.1
+  - `postcss`: ^8.4.41
+  - `puppeteer-core`: ^23.3.0
+  - `react`: ^18.3.1
+  - `react-calendar-heatmap`: ^1.9.0
+  - `react-chartjs-2`: ^5.2.0
+  - `react-dom`: ^18.3.1
+  - `react-force-graph`: ^1.29.3
+  - `react-force-graph-2d`: ^1.25.5
+  - `react-icons`: ^5.3.0
+  - `react-leaflet`: ^4.2.1
+  - `react-router-dom`: ^6.26.1
+  - `react-slick`: ^0.30.2
+  - `shadcn-ui`: ^0.2.3
+  - `slick-carousel`: ^1.8.1
+  - `tailwind-merge`: ^2.5.2
+  - `tailwindcss`: ^3.4.10
+  - `tailwindcss-animate`: ^1.0.7
+
 
 ## Installation
 
@@ -25,7 +57,7 @@ To get started with ConnectDash, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/connectdash.git
+   git clone https://github.com/Mansiverma30/connectdash.git
    ```
 
 2. **Navigate to the project directory**:
@@ -47,7 +79,7 @@ To get started with ConnectDash, follow these steps:
 
 ## Usage
 
-- **Homepage**: The main landing page introduces ConnectDash and provides a carousel of images.
+- **Homepage**: The main landing page introduces ConnectDash.
 - **Get Started**: Navigate to `/get-started` to begin using the tool and enter your social media profile details.
 - **Data Visualization**: View and analyze your social media data through interactive charts and reports.
 - **Real-Time Alerts**: Configure and receive alerts based on social media activities.
@@ -71,21 +103,11 @@ Contributions are welcome! If you'd like to contribute to ConnectDash, please fo
    ```
 5. **Open a pull request** on GitHub to merge your changes.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any questions or feedback, please contact:
 
-- **Your Name**: [Your Email]
-- **GitHub**: [Your GitHub Profile URL]
-- **LinkedIn**: [Your LinkedIn Profile URL]
+- **Mansi Verma**: vermamansi3003@gmail.com
+- [GitHub](https://github.com/Mansiverma30)
+- [LinkedIn](https://www.linkedin.com/in/mansi-verma-213288278)
 ```
-
-### Customization:
-1. Replace `[Specify backend technology if applicable]` with the actual backend technology if used.
-2. List the APIs used, if any, in the `[List any APIs used, e.g., Twitter API, Instagram Graph API]` section.
-3. Fill in your contact details in the **Contact** section, replacing placeholders with your actual information.
-4. Update the repository URL `https://github.com/yourusername/connectdash.git` with the actual URL of your repository.
