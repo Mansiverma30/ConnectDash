@@ -15,10 +15,10 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-6">
           {/* Desktop Menu */}
           <nav className="hidden md:flex md:items-center md:space-x-6 p-2">
-            <Link to="/" className="text-2xl transition-colors duration-300 ease-in-out">Home</Link>
-            <Link to="/features" className=" text-2xl transition-colors duration-300 ease-in-out">Features</Link>
-            <Link to="/about" className=" text-2xl transition-colors duration-300 ease-in-out">About</Link>
-            <Link to="/contact" className=" text-2xl transition-colors duration-300 ease-in-out">Contact</Link>
+            <Link to="/" className="text-2xl transition-colors duration-300 ease-in-out focus:text-blue-500">Home</Link>
+            <Link to="/features" className=" text-2xl transition-colors duration-300 ease-in-out focus:text-blue-500">Features</Link>
+            <Link to="/about" className=" text-2xl transition-colors duration-300 ease-in-out focus:text-blue-500">About</Link>
+            <Link to="/contact" className=" text-2xl transition-colors duration-300 ease-in-out focus:text-blue-500">Contact</Link>
           </nav>
 
           {/* Mobile Menu Button */}
