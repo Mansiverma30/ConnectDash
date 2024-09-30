@@ -46,8 +46,8 @@ const Header: React.FC = () => {
         </button>
         <nav className="mt-12 flex flex-col space-y-4">
           <Link to="/" onClick={toggleMenu} className="text-2xl  transition-colors duration-300 ease-in-out">Home</Link>
-          <a href="/features" onClick={toggleMenu} className="text-2xl  transition-colors duration-300 ease-in-out">Features</a>
-          <a href="/about" onClick={toggleMenu} className="text-2xl  transition-colors duration-300 ease-in-out">About</a>
+          <Link to="/features" onClick={toggleMenu} className="text-2xl  transition-colors duration-300 ease-in-out">Features</Link>
+          <Link to="/about" onClick={toggleMenu} className="text-2xl  transition-colors duration-300 ease-in-out">About</Link>
           <Link to="/contact" onClick={toggleMenu} className="text-2xl  transition-colors duration-300 ease-in-out">Contact</Link>
           <Link to="/get-started" onClick={toggleMenu}>
             <button className="bg-gradient-to-r from-slate-500 to-slate-700 text-white py-3 px-6 rounded-full font-semibold hover:scale-105 transition-transform duration-300 ease-in-out">

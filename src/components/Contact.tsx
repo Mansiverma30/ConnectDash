@@ -5,7 +5,7 @@ const Contact: React.FC = () => {
     <>
       <div className="py-24 bg-[#F3F4F4] text-[#162020]">
 
-        <section className='mx-28'>
+        <section className='mx-24'>
 
           <div className="flex justify-center">
             <div className="text-center md:max-w-xl lg:max-w-3xl">
