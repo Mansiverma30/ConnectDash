@@ -1,7 +1,7 @@
 
 # ConnectDash
 
-ConnectDash is an automated social media investigation tool designed to enhance the investigation process with precision and speed. It provides comprehensive data analysis, real-time insights, and customizable reports to help users manage and analyze their social media presence effectively.
+ConnectDash is an automated social media analysis tool designed to enhance the analyze process with precision and speed. It provides comprehensive data analysis, real-time insights, and customizable reports to help users manage and analyze their social media presence effectively.
 
 ## Features
 
