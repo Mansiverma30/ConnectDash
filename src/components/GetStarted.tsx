@@ -16,58 +16,53 @@ const GetStarted: React.FC = () => {
 
   const navigate = useNavigate();
 
-
   const handleInputChange = (value: string, field: string) => {
-    let filteredSuggestions: any = [];
+    setInputField(field);
+    let filteredSuggestions: any[] = [];
+    const lowerValue = value.toLowerCase();
 
-    if (field === 'fullName') {
-      setFullName(value);
-      setInputField('fullName');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.full_name.toLowerCase().includes(value.toLowerCase())
+    const filterField = (fieldKey: string) => {
+      return MockData.filter((entry: any) =>
+        (entry[fieldKey] || '').toLowerCase().includes(lowerValue)
       );
-    } else if (field === 'twitter') {
-      setTwitter(value);
-      setInputField('twitter');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.twitter_username.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (field === 'instagram') {
-      setInstagram(value);
-      setInputField('instagram');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.instagram_username.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (field === 'facebook') {
-      setFacebook(value);
-      setInputField('facebook');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.facebook_username.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (field === 'whatsapp') {
-      setWhatsapp(value);
-      setInputField('whatsapp');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.whatsapp_number.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (field === 'telegram') {
-      setTelegram(value);
-      setInputField('telegram');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.telegram_number.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (field === 'threads') {
-      setThreads(value);
-      setInputField('threads');
-      filteredSuggestions = MockData.filter((entry: any) =>
-        entry.threads_username.toLowerCase().includes(value.toLowerCase())
-      );
+    };
+
+    switch (field) {
+      case 'fullName':
+        setFullName(value);
+        filteredSuggestions = filterField('full_name');
+        break;
+      case 'twitter':
+        setTwitter(value);
+        filteredSuggestions = filterField('twitter_username');
+        break;
+      case 'instagram':
+        setInstagram(value);
+        filteredSuggestions = filterField('instagram_username');
+        break;
+      case 'facebook':
+        setFacebook(value);
+        filteredSuggestions = filterField('facebook_username');
+        break;
+      case 'whatsapp':
+        setWhatsapp(value);
+        filteredSuggestions = filterField('whatsapp_number');
+        break;
+      case 'telegram':
+        setTelegram(value);
+        filteredSuggestions = filterField('telegram_number');
+        break;
+      case 'threads':
+        setThreads(value);
+        filteredSuggestions = filterField('threads_username');
+        break;
+      default:
+        break;
     }
 
     setSuggestions(filteredSuggestions);
   };
 
-  // Handle suggestion click to auto-fill fields
   const handleSuggestionClick = (suggestion: any) => {
     setFullName(suggestion.full_name);
     setEmail(suggestion.email);
@@ -81,9 +76,13 @@ const GetStarted: React.FC = () => {
   };
 
   useEffect(() => {
-    const matchingUser = MockData.find((user: any) => user.twitter_username === twitter ||
-      user.instagram_username === instagram ||
-      user.threads_username === threads || user.facebook_username === facebook);
+    const matchingUser = MockData.find(
+      (user: any) =>
+        user.twitter_username === twitter ||
+        user.instagram_username === instagram ||
+        user.threads_username === threads ||
+        user.facebook_username === facebook
+    );
 
     if (matchingUser) {
       setFullName(matchingUser.full_name);
@@ -115,176 +114,79 @@ const GetStarted: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-[#F3F4F4] flex items-center justify-center scroll-mt-20 py-24">
-      <div className="container max-w-screen-lg mx-auto">
-        <div>
-          <div className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-              <div className="text-gray-600">
-                <p className="font-medium text-lg" id="get-started">Enter Details</p>
-                <p>Please fill out all the fields.</p>
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div className="lg:col-span-2">
-                  <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-                    {/* Full Name Input */}
-                    <div className="md:col-span-5 relative">
-                      <label htmlFor="full_name">Full Name</label>
-                      <input
-                        type="text"
-                        name="full_name"
-                        id="full_name"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Full Name"
-                        value={fullName}
-                        onChange={(e) => handleInputChange(e.target.value, 'fullName')}
-                        required
-                      />
-                      {inputField === 'fullName' && suggestions.length > 0 && (
-                        <ul className="absolute bg-white border border-gray-300 w-full mt-1 rounded-lg z-10 max-h-60 overflow-y-auto">
-                          {suggestions.map((suggestion) => (
-                            <li
-                              key={suggestion.id}
-                              className="p-2 hover:bg-gray-200 cursor-pointer"
-                              onClick={() => handleSuggestionClick(suggestion)}
-                            >
-                              {suggestion.full_name}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-
-                    {/* Email Input */}
-                    <div className="md:col-span-5">
-                      <label htmlFor="email">Email Address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="email@domain.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    {/* Twitter Input */}
-                    <div className="md:col-span-5 relative">
-                      <label htmlFor="twitter">Twitter Username</label>
-                      <input
-                        type="text"
-                        name="twitter"
-                        id="twitter"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Twitter Username"
-                        value={twitter}
-                        onChange={(e) => handleInputChange(e.target.value, 'twitter')}
-                        required
-                      />
-                      {inputField === 'twitter' && suggestions.length > 0 && (
-                        <ul className="absolute bg-white border border-gray-300 w-full mt-1 rounded-lg z-10 max-h-60 overflow-y-auto">
-                          {suggestions.map((suggestion) => (
-                            <li
-                              key={suggestion.id}
-                              className="p-2 hover:bg-gray-200 cursor-pointer"
-                              onClick={() => handleSuggestionClick(suggestion)}
-                            >
-                              {suggestion.twitter_username}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-
-                    {/* Instagram Input */}
-                    <div className="md:col-span-5">
-                      <label htmlFor="instagram">Instagram Username</label>
-                      <input
-                        type="text"
-                        name="instagram"
-                        id="instagram"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Instagram Username"
-                        value={instagram}
-                        onChange={(e) => handleInputChange(e.target.value, 'instagram')}
-                      />
-                    </div>
-
-                    {/* Facebook Input */}
-                    <div className="md:col-span-5">
-                      <label htmlFor="facebook">Facebook Username</label>
-                      <input
-                        type="text"
-                        name="facebook"
-                        id="facebook"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Facebook Username"
-                        value={facebook}
-                        onChange={(e) => handleInputChange(e.target.value, 'facebook')}
-                      />
-                    </div>
-
-                    {/* Threads Input */}
-                    <div className="md:col-span-5">
-                      <label htmlFor="facebook">Threads Username</label>
-                      <input
-                        type="text"
-                        name="threads"
-                        id="threads"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Threads Username"
-                        value={threads}
-                        onChange={(e) => handleInputChange(e.target.value, 'threads')}
-                      />
-                    </div>
-
-                    {/* WhatsApp Input */}
-
-                    <div className="md:col-span-5">
-                      <label htmlFor="whatsapp">WhatsApp Phone Number</label>
-                      <input
-                        type="tel"
-                        name="whatsapp"
-                        id="whatsapp"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Phone Number"
-                        value={whatsapp}
-                        onChange={(e) => handleInputChange(e.target.value, 'whatsapp')}
-                        required
-                      />
-                    </div>
-
-                    {/* Telegram Input */}
-
-                    <div className="md:col-span-5">
-                      <label htmlFor="telegram">Telegram Phone Number</label>
-                      <input
-                        type="tel"
-                        name="telegram"
-                        id="telegram"
-                        className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                        placeholder="Phone Number"
-                        value={telegram}
-                        onChange={(e) => handleInputChange(e.target.value, 'telegram')}
-                        required
-                      />
-                    </div>
-                    <div className="md:col-span-5 text-right flex justify-start items-center py-5">
-                      <button className="bg-gradient-to-r from-slate-500 to-slate-700 text-white hover:shadow-md font-bold py-2 px-4 rounded" type="submit">
-                        Start Analysis
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6 py-24">
+      <div className="container max-w-screen-md mx-auto bg-white shadow-lg rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-4 text-gray-700 text-center">
+          Enter Details
+        </h2>
+        <form onSubmit={handleSubmit}>
+          <div className="grid gap-4">
+            {/* Full Name */}
+            <div className="relative">
+              <label htmlFor="full_name" className="block text-gray-600 font-medium">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="full_name"
+                placeholder="Enter your full name"
+                value={fullName}
+                onChange={(e) => handleInputChange(e.target.value, 'fullName')}
+                className="w-full border rounded-lg p-2 mt-1 focus:ring focus:ring-indigo-300"
+                required
+              />
+              {inputField === 'fullName' && suggestions.length > 0 && (
+                <ul className="absolute bg-white border rounded-lg shadow-lg w-full mt-1 z-50 max-h-48 overflow-auto">
+                  {suggestions.map((suggestion) => (
+                    <li
+                      key={suggestion.id}
+                      className="p-2 hover:bg-indigo-100 cursor-pointer"
+                      onClick={() => handleSuggestionClick(suggestion)}
+                    >
+                      {suggestion.full_name}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-            <p className="text-sm text-red-600 mt-2 text-center">
-              Disclaimer: The information provided in this form is based on mock data and is not reflective of real users or social media accounts.
-            </p>
+
+            {/* Other Inputs */}
+            {[
+              { id: 'email', label: 'Email Address', value: email, setter: setEmail },
+              { id: 'twitter', label: 'Twitter Username', value: twitter, setter: setTwitter },
+              { id: 'instagram', label: 'Instagram Username', value: instagram, setter: setInstagram },
+              { id: 'facebook', label: 'Facebook Username', value: facebook, setter: setFacebook },
+              { id: 'whatsapp', label: 'WhatsApp Phone Number', value: whatsapp, setter: setWhatsapp },
+              { id: 'telegram', label: 'Telegram Phone Number', value: telegram, setter: setTelegram },
+              { id: 'threads', label: 'Threads Username', value: threads, setter: setThreads },
+            ].map(({ id, label, value, setter }) => (
+              <div key={id}>
+                <label htmlFor={id} className="block text-gray-600 font-medium">
+                  {label}
+                </label>
+                <input
+                  type="text"
+                  id={id}
+                  placeholder={`Enter ${label.toLowerCase()}`}
+                  value={value}
+                  onChange={(e) => setter(e.target.value)}
+                  className="w-full border rounded-lg p-2 mt-1 focus:ring focus:ring-indigo-300"
+                />
+              </div>
+            ))}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-slate-500 to-slate-700 text-white focus:ring focus:ring-indigo-300"
+            >
+              Start Analysis
+            </button>
           </div>
-        </div>
+        </form>
+        <p className="text-sm text-red-500 mt-4 text-center">
+        Disclaimer: The information provided in this page is based on mock data and is not reflective of real users or social media accounts.
+        </p>
       </div>
     </div>
   );

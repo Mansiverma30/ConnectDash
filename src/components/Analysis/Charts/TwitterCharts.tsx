@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
+/* import { Pie } from 'react-chartjs-2'; */
 import 'chart.js/auto';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement } from 'chart.js';
 
@@ -10,7 +10,7 @@ interface TwitterChartsProps {
 }
 
 const TwitterCharts: React.FC<TwitterChartsProps> = ({ data }) => {
-  const pieChartData = {
+ /*  const pieChartData = {
     labels: ['Followers', 'Following', 'Likes', 'Comments','Number of Tweets', 'Number of Retweets'],
     datasets: [
       {
@@ -25,7 +25,7 @@ const TwitterCharts: React.FC<TwitterChartsProps> = ({ data }) => {
         backgroundColor: ['#4CAF50', '#FFC107', '#F44336', '#2196F3','#000000', '#00ACEE'],
       },
     ],
-  };
+  }; */
 
   return (
     <div className="bg-[#F0F2F5] rounded-lg shadow-md p-4 mb-8" id="twitter-chart">
@@ -50,9 +50,6 @@ const TwitterCharts: React.FC<TwitterChartsProps> = ({ data }) => {
           <span className="font-bold">Name:</span> {data.full_name}
         </p>
         <p className="text-sm md:text-md text-gray-700">
-          <span className="font-bold">ID:</span> {data.id}
-        </p>
-        <p className="text-sm md:text-md text-gray-700">
           <span className="font-bold">Email:</span> {data.email}
         </p>
         <p className="text-sm md:text-md text-gray-700">
@@ -65,7 +62,7 @@ const TwitterCharts: React.FC<TwitterChartsProps> = ({ data }) => {
 
       <div className="mb-4">
         <h4 className="text-md md:text-lg font-medium text-[#1DA1F2] mb-4 text-center">Twitter Activity</h4>
-        <div className="h-60 md:h-80 flex justify-center items-center">
+        {/* <div className="h-60 md:h-80 flex justify-center items-center">
           <Pie
             data={pieChartData}
             options={{
@@ -74,7 +71,7 @@ const TwitterCharts: React.FC<TwitterChartsProps> = ({ data }) => {
               plugins: { legend: { display: true } },
             }}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="grid grid-cols-2 gap-2 md:gap-4 mb-4">

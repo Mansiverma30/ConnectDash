@@ -70,22 +70,28 @@ const HeroSection: React.FC = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="items-center justify-center p-6 mt-8 lg:mt-0 h-72 lg:h-96 hidden md:block">
-                        <img src={image2} alt="ConnectDash Analytics Visualization" className="object-contain h-72 lg:h-96  transition-transform duration-300 ease-in-out hover:scale-105" />
+                    <div className="hidden lg:flex items-center justify-center p-6 mt-4 lg:mt-0 lg:h-96">
+                        <img
+                            src={image2}
+                            alt="ConnectDash Analytics Visualization"
+                            className="object-contain lg:h-96 transition-transform duration-300 ease-in-out hover:scale-105"
+                        />
                     </div>
+
+
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 lg:ml-auto lg:mr-auto lg:max-w-7xl">
                     {cardData.map((card, index) => (
-                        <Card key={index} className="lg:w-96 shadow-lg hover:shadow-xl transition-shadow duration-300" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <Card key={index} className="lg:w-96 ml-4 mr-4 shadow-lg hover:shadow-xl transition-shadow duration-300" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                             <CardBody placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                <div className="mb-4 h-12 w-12 text-gray-900 text-4xl">
+                                <div className="lg:mb-2 mb-1 h-12 w-12 text-gray-900 lg:text-4xl text-2xl">
                                     {card.icon}
                                 </div>
-                                <Typography variant="h5" color="blue-gray" className="mb-2" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                                <Typography variant="h5" className="mb-2 text-lg" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                                     {card.title}
                                 </Typography>
-                                <Typography placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                                <Typography placeholder={undefined} className='text-sm' onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et aliquet justo, vel aliquet odio.
                                 </Typography>
                             </CardBody>
@@ -99,7 +105,7 @@ const HeroSection: React.FC = () => {
                     </Typography>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:max-w-5xl lg:mx-auto">
                         {testimonials.map((testimonial, index) => (
-                            <Card key={index} className="lg:w-[400px] p-9 shadow-lg hover:shadow-xl transition-shadow duration-300" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                            <Card key={index} className="lg:w-[400px] p-9 shadow-lg hover:shadow-xl transition-shadow duration-300 ml-4 mr-4" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                                 <CardHeader className="mx-0 flex items-center gap-4" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                                     <Avatar size="lg" variant="circular" src={testimonial.avatar} alt={testimonial.name} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                                     <div className="flex w-full flex-col">
@@ -123,20 +129,20 @@ const HeroSection: React.FC = () => {
                         <h3 className="text-3xl font-semibold mb-10 text-gray-800">By the Numbers</h3>
                         <div className="flex flex-col items-center gap-8 sm:flex-row justify-center">
                             <div className="relative group bg-gradient-to-br from-gray-100 to-gray-300 shadow-md rounded-lg p-8 w-48 sm:w-60 hover:bg-gradient-to-r hover:from-slate-300  hover:scale-105 transition-all duration-300 ease-in-out">
-                                <h4 className="text-5xl font-extrabold text-slate-700  transition-colors duration-300">500+</h4>
+                                <h4 className="lg:text-5xl text-4xl font-extrabold text-slate-700  transition-colors duration-300">500+</h4>
                                 <p className="mt-4 text-lg text-slate-600 ">Reports Generated</p>
                                 <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-500 to-slate-700 opacity-0  transition-opacity duration-300 ease-in-out"></div>
                             </div>
 
                             {/* Card 2 */}
                             <div className="relative group bg-gradient-to-br from-gray-100 to-gray-300 shadow-md rounded-lg p-8 w-48 sm:w-60 hover:bg-gradient-to-r hover:from-slate-300  hover:scale-105 transition-all duration-300 ease-in-out">
-                                <h4 className="text-5xl font-extrabold text-slate-700  transition-colors duration-300">1000+</h4>
+                                <h4 className="lg:text-5xl text-4xl font-extrabold text-slate-700  transition-colors duration-300">1000+</h4>
                                 <p className="mt-4 text-lg text-slate-600 ">Active Users</p>
                                 <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-500 to-slate-700 opacity-0  transition-opacity duration-300 ease-in-out"></div>
                             </div>
                         </div>
                     </div>
-                    <p className="text-lg italic text-center mt-6">
+                    <p className="text-lg italic text-center mt-6 ml-1 mr-2">
                         Revolutionize your social media management <br className="md:inline lg:hidden" />with ConnectDash.
                     </p>
                 </div>
