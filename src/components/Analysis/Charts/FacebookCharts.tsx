@@ -26,7 +26,7 @@ const FacebookCharts: React.FC<FacebookChartsProps> = ({ data }) => {
   };
 
   return (
-    <div className="bg-[#F0F2F5] rounded-lg shadow-md p-6 mb-8" id='facebook-chart'>
+    <div className="bg-[#fff7ed] rounded-lg shadow-md p-6 mb-8" id='facebook-chart'>
       <h2 className="text-2xl font-bold text-[#4267B2] mb-4">Facebook Profile Overview</h2>
 
       <div className="flex flex-col items-center mb-4">

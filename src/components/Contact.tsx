@@ -3,7 +3,7 @@ import React from 'react';
 const Contact: React.FC = () => {
   return (
     <>
-      <div className="py-24 bg-[#F3F4F4] text-[#162020]">
+      <div className="py-24 bg-[#fff7ed] text-[#1c1917]">
 
         <section className='mx-16 '>
 
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
               </div>
 
               <button type="button"
-                className="mb-6 inline-block w-full  uppercase leading-normal hover:shadow-md  bg-gradient-to-r from-slate-500 to-slate-700 text-white py-3 px-6 rounded font-semibold hover:scale-105 transition-transform duration-300 ease-in-out">
+                className="mb-6 inline-block w-full  uppercase leading-normal   bg-[#ea580c] hover:bg-orange-600 text-white py-3 px-6 rounded font-semibold transition-all shadow-md hover:shadow-lg">
                 Send
               </button>
 
@@ -50,10 +50,10 @@ const Contact: React.FC = () => {
 
             <div className="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
               <div className="flex flex-wrap">
-                <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6 ">
                   <div className="flex items-start">
                     <div className="shrink-0">
-                      <div className="inline-block rounded-md bg-teal-400-100 p-4 ">
+                      <div className="inline-block rounded-md bg-teal-400-100 p-4 bg-gradient-to-br from-[#db2777] to-[#ea580c] text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke-width="2" stroke="currentColor" className="h-8 w-8">
                           <path stroke-linecap="round" stroke-linejoin="round"
@@ -74,10 +74,10 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6 ">
                   <div className="flex items-start">
                     <div className="shrink-0">
-                      <div className="inline-block rounded-md bg-teal-400-100 p-4 ">
+                      <div className="inline-block rounded-md bg-teal-400-100 p-4 bg-gradient-to-br from-[#db2777] to-[#ea580c] text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke-width="2" stroke="currentColor" className="h-8 w-8">
                           <path stroke-linecap="round" stroke-linejoin="round"
@@ -98,10 +98,10 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
+                <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6 ">
                   <div className="align-start flex">
                     <div className="shrink-0">
-                      <div className="inline-block rounded-md bg-teal-400-100 p-4 ">
+                      <div className="inline-block rounded-md bg-teal-400-100 p-4 bg-gradient-to-br from-[#db2777] to-[#ea580c] text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke-width="2" stroke="currentColor" className="h-8 w-8">
                           <path stroke-linecap="round" stroke-linejoin="round"
@@ -123,7 +123,7 @@ const Contact: React.FC = () => {
                 <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:px-6">
                   <div className="align-start flex">
                     <div className="shrink-0">
-                      <div className="inline-block rounded-md bg-teal-400-100 p-4 ">
+                      <div className="inline-block rounded-md bg-teal-400-100 p-4 bg-gradient-to-br from-[#db2777] to-[#ea580c] text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                           stroke-width="2" stroke="currentColor" className="h-8 w-8">
                           <path stroke-linecap="round" stroke-linejoin="round"

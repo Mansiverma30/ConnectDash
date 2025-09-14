@@ -114,16 +114,16 @@ const GetStarted: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6 py-24">
+    <div className="min-h-screen bg-[#fff7ed] flex items-center justify-center p-6 py-24">
       <div className="container max-w-screen-md mx-auto bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-bold mb-4 text-gray-700 text-center">
+        <h2 className="text-2xl font-bold mb-4 text-[#1c1917] text-center">
           Enter Details
         </h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete='off'>
           <div className="grid gap-4">
             {/* Full Name */}
             <div className="relative">
-              <label htmlFor="full_name" className="block text-gray-600 font-medium">
+              <label htmlFor="full_name" className="block text-[#1c1917] font-medium">
                 Full Name
               </label>
               <input
@@ -161,7 +161,7 @@ const GetStarted: React.FC = () => {
               { id: 'threads', label: 'Threads Username', value: threads, setter: setThreads },
             ].map(({ id, label, value, setter }) => (
               <div key={id}>
-                <label htmlFor={id} className="block text-gray-600 font-medium">
+                <label htmlFor={id} className="block text-[#1c1917] font-medium">
                   {label}
                 </label>
                 <input
@@ -178,14 +178,14 @@ const GetStarted: React.FC = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-2 px-4 rounded-lg bg-gradient-to-r from-slate-500 to-slate-700 text-white focus:ring focus:ring-indigo-300"
+              className="w-full py-2 px-4 rounded-lg bg-[#ea580c] text-white hover:bg-orange-600 transition-all shadow-md hover:shadow-lg"
             >
               Start Analysis
             </button>
           </div>
         </form>
         <p className="text-sm text-red-500 mt-4 text-center">
-        Disclaimer: The information provided in this page is based on mock data and is not reflective of real users or social media accounts.
+          Disclaimer: The information provided in this page is based on mock data and is not reflective of real users or social media accounts.
         </p>
       </div>
     </div>

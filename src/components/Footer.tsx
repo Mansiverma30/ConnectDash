@@ -3,17 +3,17 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#F3F4F4] text-[#162020] py-8" id="footer">
+    <footer className="bg-[#fff7ed] text-[#1c1917] py-8 border-t-2 border-black" id="footer">
       <div className="container mx-auto flex flex-col md:flex-row md:justify-between items-start">
-        <div className="mb-6 md:mb-0 text-[#162020]">
+        <div className="mb-6 md:mb-0 text-[#1c1917]">
           <h2 className="text-xl font-bold mb-2">Mansi Verma</h2>
           <p className="mb-1">123 Your Street</p>
           <p className="mb-1">Your City, Your Country</p>
-          <p className="mb-1">Phone: +91-8770527816</p>
+          <p className="mb-1">Phone: +91-1234567890</p>
         </div>
         <div>
           <h3 className="text-lg font-semibold mb-2">Connect with me:</h3>
-          <div className="flex space-x-4 text-[#162020]">
+          <div className="flex space-x-4 text-[#1c1917]">
             <a
               href="https://github.com/Mansiverma30"
               className=""
@@ -41,8 +41,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto mt-6 text-left text-[#162020]">
-        <p>© 2024 Mansi Verma. All rights reserved.</p>
+      <div className="container mx-auto mt-6 text-left text-[#1c1917]">
+        <p>© 2025 Mansi Verma. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -1,13 +1,14 @@
-import React from 'react';
-import image2 from "../images/Photo.jpg"
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import img from "../images/analysis1.png";
 import {
-    Card,
-    CardBody,
-    Typography,
-    Avatar,
-    CardHeader
-} from "@material-tailwind/react";
+    Search,
+    Globe,
+    SlidersHorizontal,
+    Filter,
+    Lock,
+    Rocket
+} from "lucide-react";
 
 function StarIcon() {
     return (
@@ -15,7 +16,7 @@ function StarIcon() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="h-5 w-5 text-yellow-700"
+            className="h-5 w-5 text-yellow-500"
         >
             <path
                 fillRule="evenodd"
@@ -26,132 +27,188 @@ function StarIcon() {
     );
 }
 
-const HeroSection: React.FC = () => {
+const Herosection: React.FC = () => {
     const cardData = [
-        { icon: "🔍", title: "Comprehensive Social Media Analytics" },
-        { icon: "🌐", title: "Real-Time Insights and Alerts" },
-        { icon: "🛠️", title: "Customizable Dashboards and Reports" },
-        { icon: "✅", title: "Advanced Filtering and Search Options" },
-        { icon: "🔒", title: "Secure Data Handling and Privacy" },
-        { icon: "🚀", title: "Fast Data Processing and Visualization" }
+        { icon: <Search />, title: "Advanced Analytics", desc: "Gain deep insights into your social media performance with detailed analytics and reporting." },
+        { icon: <Globe />, title: "Real-Time Alerts", desc: "Receive instant notifications for important events and trends, keeping you ahead of the curve." },
+        { icon: <SlidersHorizontal />, title: "Customizable Dashboards", desc: "Tailor your dashboards to focus on the metrics that matter most to your business." },
+        { icon: <Filter />, title: "Smart Filtering", desc: "Easily filter and segment your data to uncover specific insights and patterns." },
+        { icon: <Lock />, title: "Secure Data Handling", desc: "Your data is protected with robust security measures and privacy protocols." },
+        { icon: <Rocket />, title: "Fast Processing", desc: "Experience lightning-fast data processing and analysis, providing you with timely information." }
     ];
 
     const testimonials = [
         {
-            name: "User A",
-            title: "Social Media Manager",
+            name: "Sarah Chen",
+            title: "Marketing Manager",
             feedback:
-                "ConnectDash has transformed how we monitor and analyze social media. Highly effective and user-friendly!",
-            avatar: "https://robohash.org/atfacilisoptio.png?size=50x50&set=set1",
+                "ConnectDash has revolutionized our social media strategy. The insights are incredibly valuable, and the platform is easy to use.",
+            avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+            stars: 4,
         },
         {
-            name: "User B",
-            title: "Marketing Specialist",
+            name: "David Lee",
+            title: "Social Media Specialist",
             feedback:
-                "An invaluable tool for our social media strategy. Fast, accurate, and insightful.",
-            avatar: "https://robohash.org/atfacilisoptio.png?size=50x50&set=set1",
+                "I love the real-time alerts! They help me stay on top of trends and engage with my audience effectively.",
+            avatar: "https://randomuser.me/api/portraits/men/46.jpg",
+            stars: 5,
+        },
+        {
+            name: "Emily Wong",
+            title: "Business Owner",
+            feedback:
+                "The customizable dashboards allow me to focus on the metrics that matter most to my business. Highly recommended.",
+            avatar: "https://randomuser.me/api/portraits/women/47.jpg",
+            stars: 5,
         },
     ];
 
     return (
-        <div>
-            <section className="text-[#162020] bg-[#F3F4F4] py-10">
-                <div className="container max-w-7xl flex flex-col justify-center p-4 sm:p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-                    <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-none">ConnectDash</h1>
-                        <p className="mt-6 mb-8 text-lg sm:mb-12"> Get a comprehensive view of your social media presence
-                            <br className="hidden md:inline lg:hidden" /> with detailed insights and real-time data.
-                        </p>
-                        <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+        <div className="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+            <main className="flex-1">
+                {/* Hero Section */}
+                <section className="py-20 mt-10 px-6 sm:px-10 bg-white">
+                    <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div className="flex flex-col gap-8">
+                            <h1 className="text-[#1c1917] text-4xl md:text-5xl font-black leading-tight">
+                                ConnectDash
+                            </h1>
+                            <p className="text-stone-600 text-lg md:text-xl">
+                                Get a comprehensive view of your social media presence with
+                                detailed insights and real-time data.
+                            </p>
                             <Link to="/get-started">
-                                <button className="bg-gradient-to-r from-slate-500 to-slate-700 text-white py-3 px-6 rounded-full font-semibold hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg hover:shadow-xl">
+                                <button className="rounded-lg h-12 px-8 bg-[#ea580c] text-white text-lg font-bold hover:bg-orange-600 transition-all shadow-md hover:shadow-lg">
+                                    Get Started
+                                </button>
+                            </Link>
+                        </div>
+                        <div
+                            className="w-full h-full bg-center bg-no-repeat aspect-video max-h-[400px] sm:max-h-[500px] bg-cover rounded-2xl hover:scale-105 transition-transform duration-300 shadow-2xl"
+                            style={{ backgroundImage: `url(${img})` }}
+                        />
+                    </div>
+                </section>
+
+                {/* Features */}
+                <section className="py-24 px-6 sm:px-10 bg-[#fff7ed]">
+                    <div className="mx-auto max-w-7xl text-center mb-16">
+                        <h2 className="text-[#1c1917] text-4xl md:text-5xl font-black">
+                            Core Features
+                        </h2>
+                        <p className="text-stone-600 text-lg mt-4 max-w-2xl mx-auto">
+                            Discover the powerful tools that will elevate your social media game.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {cardData.map((card, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col gap-4 rounded-xl border border-orange-100 bg-white p-6 hover:shadow-xl hover:-translate-y-1 transition-all"
+                            >
+                                <div className="flex items-center justify-center size-12 rounded-full bg-gradient-to-br from-[#db2777] to-[#ea580c] text-white">
+                                    {card.icon}
+                                </div>
+                                <div>
+                                    <h3 className="text-[#1c1917] text-xl font-bold">{card.title}</h3>
+                                    <p className="text-stone-600 text-base">{card.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Testimonials */}
+                <section className="py-24 px-6 sm:px-10 bg-white">
+                    <div className="mx-auto max-w-7xl text-center mb-16">
+                        <h2 className="text-[#1c1917] text-4xl md:text-5xl font-black">
+                            What Our Customers Say
+                        </h2>
+                        <p className="text-stone-600 text-lg mt-4 max-w-2xl mx-auto">
+                            Join thousands of happy customers who are growing their brands with ConnectDash.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {testimonials.map((t, index) => (
+                            <div key={index} className="flex flex-col gap-6 rounded-xl bg-[#fff7ed] p-8 border border-orange-100">
+                                <div className="flex items-center">
+                                    <img
+                                        alt={t.name}
+                                        className="w-12 h-12 rounded-full object-cover"
+                                        src={t.avatar}
+                                    />
+                                    <div className="ml-4">
+                                        <h4 className="text-[#1c1917] text-lg font-bold">{t.name}</h4>
+                                        <p className="text-stone-600 text-sm">{t.title}</p>
+                                    </div>
+                                </div>
+                                <div className="flex text-[#ea580c]">
+                                    {Array.from({ length: t.stars }, (_, i) => (
+                                        <StarIcon key={i} />
+                                    ))}
+                                </div>
+                                <p className="text-stone-700 text-base leading-relaxed">
+                                    {t.feedback}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* By the Numbers */}
+                <section className="py-24 px-6 sm:px-10 bg-[#fff7ed]">
+                    <div className="mx-auto max-w-7xl text-center mb-16">
+                        <h2 className="text-[#1c1917] text-4xl md:text-5xl font-black">
+                            By the Numbers
+                        </h2>
+                        <p className="text-stone-600 text-lg mt-4 max-w-2xl mx-auto">
+                            Our platform's impact speaks for itself. Check out the stats.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
+                        {[
+                            { value: "1M+", label: "Accounts Analyzed" },
+                            { value: "50M+", label: "Insights Generated" },
+                            { value: "98%", label: "Customer Satisfaction" },
+                        ].map((stat, i) => (
+                            <div
+                                key={i}
+                                className="rounded-xl p-8 bg-white shadow-lg border border-orange-100"
+                            >
+                                <p className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-[#db2777] to-[#ea580c]">
+                                    {stat.value}
+                                </p>
+                                <p className="text-stone-600 text-lg mt-2">{stat.label}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Final CTA */}
+                <section className="py-24 px-6 sm:px-10 bg-white">
+                    <div className="mx-auto max-w-4xl text-center bg-gradient-to-br from-[#ea580c] via-[#db2777] to-[#10b981] rounded-2xl p-16 shadow-2xl">
+                        <h2 className="text-white text-4xl md:text-5xl font-black">
+                            Ready to Transform Your Social Media Strategy?
+                        </h2>
+                        <p className="text-orange-100 text-lg mt-6 max-w-2xl mx-auto">
+                            Don't wait. Take control of your social media presence today and start seeing results.
+                        </p>
+                        <div className="mt-10">
+                            <Link to="/get-started">
+                                <button className="rounded-lg h-14 px-10 bg-white text-[#ea580c] text-xl font-bold hover:bg-orange-50 transition-all shadow-lg hover:shadow-xl">
                                     Get Started
                                 </button>
                             </Link>
                         </div>
                     </div>
-                    <div className="hidden lg:flex items-center justify-center p-6 mt-4 lg:mt-0 lg:h-96">
-                        <img
-                            src={image2}
-                            alt="ConnectDash Analytics Visualization"
-                            className="object-contain lg:h-96 transition-transform duration-300 ease-in-out hover:scale-105"
-                        />
-                    </div>
-
-
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 lg:ml-auto lg:mr-auto lg:max-w-7xl">
-                    {cardData.map((card, index) => (
-                        <Card key={index} className="lg:w-96 ml-4 mr-4 shadow-lg hover:shadow-xl transition-shadow duration-300" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                            <CardBody placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                <div className="lg:mb-2 mb-1 h-12 w-12 text-gray-900 lg:text-4xl text-2xl">
-                                    {card.icon}
-                                </div>
-                                <Typography variant="h5" className="mb-2 text-lg" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                    {card.title}
-                                </Typography>
-                                <Typography placeholder={undefined} className='text-sm' onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et aliquet justo, vel aliquet odio.
-                                </Typography>
-                            </CardBody>
-                        </Card>
-                    ))}
-                </div>
-
-                <div className="py-12">
-                    <Typography variant="h3" color="blue-gray" className="text-center mb-8" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                        What Our Users Say
-                    </Typography>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:max-w-5xl lg:mx-auto">
-                        {testimonials.map((testimonial, index) => (
-                            <Card key={index} className="lg:w-[400px] p-9 shadow-lg hover:shadow-xl transition-shadow duration-300 ml-4 mr-4" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                <CardHeader className="mx-0 flex items-center gap-4" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                    <Avatar size="lg" variant="circular" src={testimonial.avatar} alt={testimonial.name} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
-                                    <div className="flex w-full flex-col">
-                                        <Typography variant="h5" color="blue-gray" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                            {testimonial.name}
-                                        </Typography>
-                                        <div className="flex items-center gap-0">
-                                            {Array(5).fill(<StarIcon />)}
-                                        </div>
-                                        <Typography color="blue-gray" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{testimonial.title}</Typography>
-                                    </div>
-                                </CardHeader>
-                                <CardBody className="mb-6" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                                    <Typography placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>"{testimonial.feedback}"</Typography>
-                                </CardBody>
-                            </Card>
-                        ))}
-                    </div>
-
-                    <div className="mb-12 text-center py-10">
-                        <h3 className="text-3xl font-semibold mb-10 text-gray-800">By the Numbers</h3>
-                        <div className="flex flex-col items-center gap-8 sm:flex-row justify-center">
-                            <div className="relative group bg-gradient-to-br from-gray-100 to-gray-300 shadow-md rounded-lg p-8 w-48 sm:w-60 hover:bg-gradient-to-r hover:from-slate-300  hover:scale-105 transition-all duration-300 ease-in-out">
-                                <h4 className="lg:text-5xl text-4xl font-extrabold text-slate-700  transition-colors duration-300">500+</h4>
-                                <p className="mt-4 text-lg text-slate-600 ">Reports Generated</p>
-                                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-500 to-slate-700 opacity-0  transition-opacity duration-300 ease-in-out"></div>
-                            </div>
-
-                            {/* Card 2 */}
-                            <div className="relative group bg-gradient-to-br from-gray-100 to-gray-300 shadow-md rounded-lg p-8 w-48 sm:w-60 hover:bg-gradient-to-r hover:from-slate-300  hover:scale-105 transition-all duration-300 ease-in-out">
-                                <h4 className="lg:text-5xl text-4xl font-extrabold text-slate-700  transition-colors duration-300">1000+</h4>
-                                <p className="mt-4 text-lg text-slate-600 ">Active Users</p>
-                                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-slate-500 to-slate-700 opacity-0  transition-opacity duration-300 ease-in-out"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <p className="text-lg italic text-center mt-6 ml-1 mr-2">
-                        Revolutionize your social media management <br className="md:inline lg:hidden" />with ConnectDash.
+                    <p className="text-sm text-red-600 text-center p-4">
+                        Disclaimer: This page is based on mock data and is not reflective of real users or accounts.
                     </p>
-                </div>
-                <p className="text-sm text-red-600 text-center p-4">
-                    Disclaimer: The information provided in this page is based on mock data and is not reflective of real users or social media accounts.
-                </p>
-            </section>
+                </section>
+            </main>
         </div>
     );
 };
 
-export default HeroSection;
+export default Herosection;

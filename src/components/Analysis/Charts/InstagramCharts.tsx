@@ -12,7 +12,7 @@ interface InstagramChartsProps {
 const InstagramCharts: React.FC<InstagramChartsProps> = ({ data }) => {
 
   const pieChartData = {
-    labels: ['Followers', 'Following', 'Likes', 'Comments','Number of Posts', 'Number of Stories'],
+    labels: ['Followers', 'Following', 'Likes', 'Comments', 'Number of Posts', 'Number of Stories'],
     datasets: [
       {
         data: [
@@ -23,13 +23,13 @@ const InstagramCharts: React.FC<InstagramChartsProps> = ({ data }) => {
           data.instagram_no_of_post,
           data.instagram_no_of_stories,
         ],
-        backgroundColor: ['#E1306C', '#F56040', '#C13584', '#FFFC00','#E1306C', '#F56040'], // Instagram's colors
+        backgroundColor: ['#E1306C', '#F56040', '#C13584', '#FFFC00', '#E1306C', '#F56040'], // Instagram's colors
       }
     ],
   };
 
   return (
-    <div className="bg-[#F0F2F5] rounded-lg shadow-md p-6 mb-8 " id='instagram-chart'>
+    <div className="bg-[#fff7ed] rounded-lg shadow-md p-6 mb-8 " id='instagram-chart'>
       <h2 className="text-2xl font-bold text-[#E1306C] mb-4">Instagram Profile Overview</h2>
 
       <div className="flex flex-col items-center mb-4">

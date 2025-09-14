@@ -60,18 +60,18 @@ const AnalysisPage: React.FC = () => {
       const images = element.getElementsByTagName('img');
       let loadedImagesCount = 0;
       const totalImages = images.length;
-  
+
       if (totalImages === 0) {
         resolve(); // No images to load
         return;
       }
-  
+
       const checkIfAllImagesLoaded = () => {
         if (loadedImagesCount === totalImages) {
           resolve();
         }
       };
-  
+
       Array.from(images).forEach((img) => {
         if (img.complete) {
           loadedImagesCount++;
@@ -89,7 +89,7 @@ const AnalysisPage: React.FC = () => {
       });
     });
   };
-  
+
   const downloadPDF = async () => {
     const chartIds: string[] = [];
 
@@ -109,63 +109,63 @@ const AnalysisPage: React.FC = () => {
     const padding = isLargeScreen ? 10 : 5; // Larger padding for large screens, smaller for small screens
 
     for (const [index, id] of chartIds.entries()) {
-        const element = document.getElementById(id);
-        if (!element) {
-            console.error(`Element with ID ${id} not found`);
-            continue;
-        }
+      const element = document.getElementById(id);
+      if (!element) {
+        console.error(`Element with ID ${id} not found`);
+        continue;
+      }
 
-        // Wait for images to load
-        await waitForImagesToLoad(element);
+      // Wait for images to load
+      await waitForImagesToLoad(element);
 
-        // Generate canvas
-        const canvas = await html2canvas(element, {
-            scale: 2, // Increase scale for better quality
-            useCORS: true, // Enable cross-origin images
-            logging: true // Enable logging for debugging
-        });
+      // Generate canvas
+      const canvas = await html2canvas(element, {
+        scale: 2, // Increase scale for better quality
+        useCORS: true, // Enable cross-origin images
+        logging: true // Enable logging for debugging
+      });
 
-        const imgData = canvas.toDataURL('image/jpeg', 0.7); // Compress image
-        const imgWidth = pageWidth - padding * 2; // Max width considering padding
-        const imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
+      const imgData = canvas.toDataURL('image/jpeg', 0.7); // Compress image
+      const imgWidth = pageWidth - padding * 2; // Max width considering padding
+      const imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
 
-        // Calculate X and Y positions to center the image
-        const xOffset = (pageWidth - imgWidth) / 2; // Horizontal centering
-        let yOffset = (pageHeight - imgHeight) / 2; // Vertical centering
+      // Calculate X and Y positions to center the image
+      const xOffset = (pageWidth - imgWidth) / 2; // Horizontal centering
+      let yOffset = (pageHeight - imgHeight) / 2; // Vertical centering
 
-        // Ensure the image fits within the page height
-        if (imgHeight > pageHeight - padding * 2) {
-            const scaledHeight = pageHeight - padding * 2;
-            const scaledWidth = (canvas.width * scaledHeight) / canvas.height;
+      // Ensure the image fits within the page height
+      if (imgHeight > pageHeight - padding * 2) {
+        const scaledHeight = pageHeight - padding * 2;
+        const scaledWidth = (canvas.width * scaledHeight) / canvas.height;
 
-            yOffset = (pageHeight - scaledHeight) / 2; // Recalculate Y offset for scaled image
+        yOffset = (pageHeight - scaledHeight) / 2; // Recalculate Y offset for scaled image
 
-            pdf.addImage(imgData, 'JPEG', (pageWidth - scaledWidth) / 2, yOffset, scaledWidth, scaledHeight);
-        } else {
-            pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight);
-        }
+        pdf.addImage(imgData, 'JPEG', (pageWidth - scaledWidth) / 2, yOffset, scaledWidth, scaledHeight);
+      } else {
+        pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight);
+      }
 
-        // Add a new page after each chart except the last one
-        if (index < chartIds.length - 1) {
-            pdf.addPage();
-        }
+      // Add a new page after each chart except the last one
+      if (index < chartIds.length - 1) {
+        pdf.addPage();
+      }
     }
 
     pdf.save('analysis-page.pdf');
-};
+  };
 
 
 
 
 
   return (
-    <div className="min-h-screen p-6 bg-[#F3F4F4] scroll-mt-24 py-28">
+    <div className="min-h-screen p-6 bg-[#fff7ed] scroll-mt-24 py-28">
       <div className="bg-white rounded-lg shadow-md p-4 mb-6 max-w-3xl mx-auto" id="analysis-page">
         <h2 className="text-2xl font-semibold text-[#162020] mb-4">Analysis Results</h2>
-        
+
         <div className="mb-4 text-[#162020] gap-2">
           <h3 className="text-lg font-semibold mb-2">Select Data to Include in Report</h3>
-  
+
           <label className="flex items-center mb-2">
             <input
               type="checkbox"
@@ -175,7 +175,7 @@ const AnalysisPage: React.FC = () => {
             />
             Include Twitter Data
           </label>
-  
+
           <label className="flex items-center mb-2">
             <input
               type="checkbox"
@@ -185,7 +185,7 @@ const AnalysisPage: React.FC = () => {
             />
             Include Instagram Data
           </label>
-  
+
           <label className="flex items-center mb-2">
             <input
               type="checkbox"
@@ -195,7 +195,7 @@ const AnalysisPage: React.FC = () => {
             />
             Include WhatsApp Data
           </label>
-  
+
           <label className="flex items-center mb-2">
             <input
               type="checkbox"
@@ -205,7 +205,7 @@ const AnalysisPage: React.FC = () => {
             />
             Include Telegram Data
           </label>
-  
+
           <label className="flex items-center mb-2">
             <input
               type="checkbox"
@@ -215,7 +215,7 @@ const AnalysisPage: React.FC = () => {
             />
             Include Facebook Data
           </label>
-  
+
           <label className="flex items-center mb-2">
             <input
               type="checkbox"
@@ -226,7 +226,7 @@ const AnalysisPage: React.FC = () => {
             Include Threads Data
           </label>
         </div>
-  
+
         {includeTwitter && (
           <div id="twitter-chart">
             <TwitterChart data={twitterData} />
@@ -258,7 +258,7 @@ const AnalysisPage: React.FC = () => {
           </div>
         )}
       </div>
-      
+
       <div className='flex items-center justify-center'>
         <button onClick={downloadPDF} className="md:w-60 bg-gradient-to-r from-slate-500 to-slate-700 text-white font-bold py-3 px-6 rounded-lg mt-3 transition-transform transform hover:scale-105 hover:shadow-xl shadow-[#F97316]/50">
           Download as PDF
@@ -266,7 +266,7 @@ const AnalysisPage: React.FC = () => {
       </div>
     </div>
   );
-  
+
 };
 
 export default AnalysisPage;

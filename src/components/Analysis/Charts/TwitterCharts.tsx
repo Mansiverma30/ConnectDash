@@ -10,25 +10,25 @@ interface TwitterChartsProps {
 }
 
 const TwitterCharts: React.FC<TwitterChartsProps> = ({ data }) => {
- /*  const pieChartData = {
-    labels: ['Followers', 'Following', 'Likes', 'Comments','Number of Tweets', 'Number of Retweets'],
-    datasets: [
-      {
-        data: [
-          data.twitter_followers_count,
-          data.twitter_following_count,
-          data.twitter_likes,
-          data.twitter_comments,
-          data.no_of_tweets, 
-          data.no_of_retweets
-        ],
-        backgroundColor: ['#4CAF50', '#FFC107', '#F44336', '#2196F3','#000000', '#00ACEE'],
-      },
-    ],
-  }; */
+  /*  const pieChartData = {
+     labels: ['Followers', 'Following', 'Likes', 'Comments','Number of Tweets', 'Number of Retweets'],
+     datasets: [
+       {
+         data: [
+           data.twitter_followers_count,
+           data.twitter_following_count,
+           data.twitter_likes,
+           data.twitter_comments,
+           data.no_of_tweets, 
+           data.no_of_retweets
+         ],
+         backgroundColor: ['#4CAF50', '#FFC107', '#F44336', '#2196F3','#000000', '#00ACEE'],
+       },
+     ],
+   }; */
 
   return (
-    <div className="bg-[#F0F2F5] rounded-lg shadow-md p-4 mb-8" id="twitter-chart">
+    <div className="bg-[#fff7ed] rounded-lg shadow-md p-4 mb-8" id="twitter-chart">
       <h2 className="text-xl font-bold text-[#1DA1F2] mb-4 text-center">Twitter Profile Overview</h2>
 
       <div className="flex flex-col items-center mb-4">

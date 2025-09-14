@@ -67,3 +67,9 @@
     @apply bg-background text-foreground;
   }
 }
+.gradient-circle {
+  background: linear-gradient(to right, #ea580c, #db2777);
+}
+.gradient-circle-alt {
+  background: linear-gradient(to right, #db2777, #10b981);
+}

@@ -1,71 +1,145 @@
 import React from 'react';
-import { FingerPrintIcon } from '@heroicons/react/24/outline';
 
 const Features: React.FC = () => {
   return (
-    <div>
+    <div id='features'>
+      <div
+        className="relative bg-[#fff7ed] flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden text-[#1c1917] mt-10"
+      >
+        <div className="layout-container flex h-full grow flex-col">
+          <main
+            className="flex flex-1 flex-col items-center py-12 md:py-20 px-4 sm:px-6 lg:px-8"
+          >
+            <div className="w-full max-w-7xl mx-auto">
+              <div className="text-center mb-12 md:mb-16">
+                <h1
+                  className="text-4xl md:text-6xl font-extrabold  mb-4"
+                >
+                  Powerful Features to Boost Your Social Media
+                </h1>
+                <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+                  Explore the powerful features that make ConnectDash the ultimate
+                  social media analytics tool.
+                </p>
+                <div
+                  className="w-24 h-1 bg-gradient-to-r from-[#ea580c] to-[#db2777] mx-auto mt-6 rounded-full"
+                ></div>
+              </div>
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 @container"
+              >
+                <div
+                  className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="gradient-circle w-16 h-16 rounded-full flex items-center justify-center text-white"
+                  >
+                    <span className="material-symbols-outlined text-4xl"
+                    >monitoring</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold">Advanced Analytics</h2>
+                    <p className="text-gray-600">
+                      Automatically collect and analyze data from Facebook,
+                      Twitter, Instagram, and more.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="gradient-circle-alt w-16 h-16 rounded-full flex items-center justify-center text-white"
+                  >
+                    <span className="material-symbols-outlined">
+                      bar_chart
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold">Data Visualization</h2>
+                    <p className="text-gray-600">
+                      Bring complex data to life with interactive dashboards.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="gradient-circle w-16 h-16 rounded-full flex items-center justify-center text-white"
+                  >
+                    <span className="material-symbols-outlined text-4xl"
+                    >summarize</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold">PDF Generation</h2>
+                    <p className="text-gray-600">
+                      Capture and document evidence
+                      with precision.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="gradient-circle-alt w-16 h-16 rounded-full flex items-center justify-center text-white"
+                  >
+                    <span className="material-symbols-outlined text-4xl"
+                    >contextual_token</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold">Customizable Reports</h2>
+                    <p className="text-gray-600">
+                      Generate tailored reports for
+                      clients or stakeholders.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="gradient-circle w-16 h-16 rounded-full flex items-center justify-center text-white"
+                  >
+                    <span className="material-symbols-outlined text-4xl"
+                    >security</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold">Security First</h2>
+                    <p className="text-gray-600">
+                      Your data security is our top priority. We use
+                      industry-leading security measures to protect your
+                      information.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-soft transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="gradient-circle-alt w-16 h-16 rounded-full flex items-center justify-center text-white"
+                  >
+                    <span className="material-symbols-outlined text-4xl"
+                    >add_alert</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-bold">Real-time Alerts</h2>
+                    <p className="text-gray-600">
+                      Stay informed with
+                      instant notifications.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-sm text-red-600 text-center p-4">
+              Disclaimer: This page is based on mock data and is not reflective of real users or accounts.
+            </p>
+          </main>
+        </div>
+      </div>
 
-      <section className="bg-[#F3F4F4]  py-16 sm:py-20 lg:py-16" id='features'>
-        <div className="container mx-auto p-4 my-6 space-y-2 text-center">
-          <p className="text-[#162020] lg:text-lg text-base">Explore our features, and achieve the results you didn't think were possible</p>
-          <h2 className="text-[#162020] lg:text-[36px] text-3xl pt-3 font-bold">Complete all-in-one solution, loaded</h2>
-          <h2 className="text-[#162020] lg:text-xl text-2xl font-bold">with powerful features</h2>
-        </div>
-        <div className="container mx-auto grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col items-center p-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 ">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-            </svg>
-            <h3 className="my-3 text-3xl font-semibold">Data Parsing</h3>
-            <div className="space-y-1 leading-tight">
-              <p className='flex text-center'>Automatically collect and analyze data from Facebook,
-                <br className='flex text-center' /> Twitter, Instagram, and more. </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center p-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 ">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 4.5H19.5v15H4.5V4.5zm4.5 7.5h6" />
-            </svg>
-            <h3 className="my-3 text-3xl font-semibold">Data Visualization</h3>
-            <div className="space-y-1 leading-tight">
-              <p className='flex text-center'>Bring complex data to life
-                <br className='flex text-center' /> with interactive dashboards.</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center p-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            <h3 className="my-3 text-3xl font-semibold">PDF Generation</h3>
-            <div className="space-y-1 leading-tight">
-              <p className='flex text-center'>Capture and document evidence
-                <br className='flex text-center' /> with precision. </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center p-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 4.5H19.5v15H4.5V4.5zm4.5 7.5h6" />
-            </svg>
-            <h3 className="my-3 text-3xl font-semibold text-center">Customizable <br className="hidden md:inline lg:hidden " />Reports</h3>
-            <div className="space-y-1 leading-tight">
-              <p className='flex text-center'>Generate tailored reports for
-                <br className='flex text-center' /> clients or stakeholders. </p>
-            </div>
-          </div>
-          
-          <div className="flex flex-col items-center p-4">
-            <FingerPrintIcon aria-hidden="true" className="w-8 h-8" />
-            <h3 className="my-3 text-3xl font-semibold">Real-time Alerts</h3>
-            <div className="space-y-1 leading-tight">
-              <p className='flex text-center'>Stay informed with
-                <br className='flex text-center' /> instant notifications. </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center p-4">
-            <h3 className="my-3 text-2xl font-semibold">And Many More</h3>
-          </div>
-        </div>
-      </section>
     </div >
   );
 };
