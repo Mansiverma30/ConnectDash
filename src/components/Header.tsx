@@ -7,8 +7,8 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="bg-[#fff7ed]/40 text-[#1c1917] p-4 fixed w-full top-0 left-0 z-50 backdrop-blur">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="md:bg-[#fff7ed]/40 bg-[#fff7ed] text-[#1c1917] p-4 fixed w-full top-0 left-0 z-50 md:backdrop-blur">
+      <div className="container mx-auto flex items-center justify-between ">
         <a href="/" className="flex-shrink-0">
           <h1 className="text-2xl font-bold">ConnectDash</h1>
         </a>
