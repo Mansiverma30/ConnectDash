@@ -6,9 +6,13 @@ import MockData from './MockData/MockData.json';
 import WhatsAppCharts from './Charts/WhatsappCharts';
 import TelegramCharts from './Charts/TelegramCharts';
 import FacebookCharts from './Charts/FacebookCharts';
-import ThreadsCharts from './Charts/ThreadsCharts';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import twitter from "../../images/twitter.svg"
+import whatsapp from "../../images/whatsapp.svg"
+import facebook from "../../images/facebook.svg"
+import instagram from "../../images/instagram.svg"
+import telegram from "../../images/telegram.svg"
 
 const AnalysisPage: React.FC = () => {
   const [twitterData, setTwitterData] = useState<any>(null);
@@ -16,7 +20,6 @@ const AnalysisPage: React.FC = () => {
   const [whatsappData, setWhatsappData] = useState<any>(null);
   const [telegramData, setTelegramData] = useState<any>(null);
   const [facebookData, setFacebookData] = useState<any>(null);
-  const [threadsData, setThreadsData] = useState<any>(null);
 
   /* Custamization Of PDF */
   const [includeTwitter, setIncludeTwitter] = useState(true);
@@ -24,7 +27,6 @@ const AnalysisPage: React.FC = () => {
   const [includeWhatsapp, setIncludeWhatsapp] = useState(true);
   const [includeTelegram, setIncludeTelegram] = useState(true);
   const [includeFacebook, setIncludeFacebook] = useState(true);
-  const [includeThreads, setIncludeThreads] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,7 +43,6 @@ const AnalysisPage: React.FC = () => {
         setWhatsappData(filteredData);
         setTelegramData(filteredData);
         setFacebookData(filteredData);
-        setThreadsData(filteredData);
       } else {
         console.error("Username not found in mock data");
         navigate('/get-started');
@@ -51,7 +52,7 @@ const AnalysisPage: React.FC = () => {
     }
   }, [navigate]);
 
-  if (!twitterData || !instagramData || !whatsappData || !telegramData || !facebookData || !threadsData) {
+  if (!twitterData || !instagramData || !whatsappData || !telegramData || !facebookData) {
     return <p>Loading...</p>;
   }
 
@@ -98,134 +99,127 @@ const AnalysisPage: React.FC = () => {
     if (includeWhatsapp) chartIds.push('whatsapp-chart');
     if (includeTelegram) chartIds.push('telegram-chart');
     if (includeFacebook) chartIds.push('facebook-chart');
-    if (includeThreads) chartIds.push('threads-chart');
-
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pageWidth = pdf.internal.pageSize.width;
-    const pageHeight = pdf.internal.pageSize.height;
-
-    // Check screen width to apply padding for large or small screens
-    const isLargeScreen = window.innerWidth > 768; // Example threshold for large screen
-    const padding = isLargeScreen ? 10 : 5; // Larger padding for large screens, smaller for small screens
 
     for (const [index, id] of chartIds.entries()) {
       const element = document.getElementById(id);
-      if (!element) {
-        console.error(`Element with ID ${id} not found`);
-        continue;
-      }
+      if (!element) continue;
 
-      // Wait for images to load
       await waitForImagesToLoad(element);
 
-      // Generate canvas
+
       const canvas = await html2canvas(element, {
-        scale: 2, // Increase scale for better quality
-        useCORS: true, // Enable cross-origin images
-        logging: true // Enable logging for debugging
+        scale: 2,
+        useCORS: true,
       });
 
-      const imgData = canvas.toDataURL('image/jpeg', 0.7); // Compress image
-      const imgWidth = pageWidth - padding * 2; // Max width considering padding
-      const imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
+      const imgData = canvas.toDataURL('image/png');
 
-      // Calculate X and Y positions to center the image
-      const xOffset = (pageWidth - imgWidth) / 2; // Horizontal centering
-      let yOffset = (pageHeight - imgHeight) / 2; // Vertical centering
+      // Create PDF with element size
+      const pdf = new jsPDF({
+        orientation: canvas.width > canvas.height ? 'landscape' : 'portrait',
+        unit: 'px',
+        format: [canvas.width, canvas.height]
+      });
 
-      // Ensure the image fits within the page height
-      if (imgHeight > pageHeight - padding * 2) {
-        const scaledHeight = pageHeight - padding * 2;
-        const scaledWidth = (canvas.width * scaledHeight) / canvas.height;
 
-        yOffset = (pageHeight - scaledHeight) / 2; // Recalculate Y offset for scaled image
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      let remainingHeight = canvas.height;
+      let position = 0;
 
-        pdf.addImage(imgData, 'JPEG', (pageWidth - scaledWidth) / 2, yOffset, scaledWidth, scaledHeight);
-      } else {
-        pdf.addImage(imgData, 'JPEG', xOffset, yOffset, imgWidth, imgHeight);
+      while (remainingHeight > 0) {
+
+        pdf.addImage(
+          imgData,
+          'PNG',
+          0,
+          position,
+          pageWidth,
+          canvas.height
+        );
+
+        remainingHeight -= pageHeight;
+        position += pageHeight;
+
+        if (remainingHeight > 0) pdf.addPage();
       }
 
-      // Add a new page after each chart except the last one
-      if (index < chartIds.length - 1) {
-        pdf.addPage();
-      }
+      pdf.save(`analysis-page-${index + 1}.pdf`);
     }
-
-    pdf.save('analysis-page.pdf');
   };
-
-
-
-
 
   return (
     <div className="min-h-screen p-6 bg-[#fff7ed] scroll-mt-24 py-28">
       <div className="bg-white rounded-lg shadow-md p-4 mb-6 max-w-3xl mx-auto" id="analysis-page">
         <h2 className="text-2xl font-semibold text-[#162020] mb-4">Analysis Results</h2>
 
-        <div className="mb-4 text-[#162020] gap-2">
-          <h3 className="text-lg font-semibold mb-2">Select Data to Include in Report</h3>
+        <div className="mb-6 p-6 bg-white rounded-xl shadow-md text-[#162020]">
+          <h3 className="text-lg font-semibold mb-4 border-b pb-2">Select Data to Include in Report</h3>
 
-          <label className="flex items-center mb-2">
-            <input
-              type="checkbox"
-              checked={includeTwitter}
-              onChange={() => setIncludeTwitter(!includeTwitter)}
-              className="mr-2"
-            />
-            Include Twitter Data
-          </label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Twitter */}
+            <label className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg hover:shadow-md transition-all cursor-pointer border-l-4 border-[#1DA1F2]">
+              <img src={twitter} alt="Twitter" className="w-6 h-6" />
+              <span className="font-medium text-[#1DA1F2]">Include Twitter Data</span>
+              <input
+                type="checkbox"
+                checked={includeTwitter}
+                onChange={() => setIncludeTwitter(!includeTwitter)}
+                className="ml-auto w-5 h-5 accent-[#1DA1F2]"
+              />
+            </label>
 
-          <label className="flex items-center mb-2">
-            <input
-              type="checkbox"
-              checked={includeInstagram}
-              onChange={() => setIncludeInstagram(!includeInstagram)}
-              className="mr-2"
-            />
-            Include Instagram Data
-          </label>
+            {/* Instagram */}
+            <label className="flex items-center gap-3 p-4 bg-pink-50 rounded-lg hover:shadow-md transition-all cursor-pointer border-l-4 border-[#E1306C]">
+              <img src={instagram} alt="Instagram" className="w-6 h-6" />
+              <span className="font-medium text-[#E1306C]">Include Instagram Data</span>
+              <input
+                type="checkbox"
+                checked={includeInstagram}
+                onChange={() => setIncludeInstagram(!includeInstagram)}
+                className="ml-auto w-5 h-5 accent-[#E1306C]"
+              />
+            </label>
 
-          <label className="flex items-center mb-2">
-            <input
-              type="checkbox"
-              checked={includeWhatsapp}
-              onChange={() => setIncludeWhatsapp(!includeWhatsapp)}
-              className="mr-2"
-            />
-            Include WhatsApp Data
-          </label>
+            {/* WhatsApp */}
+            <label className="flex items-center gap-3 p-4 bg-green-50 rounded-lg hover:shadow-md transition-all cursor-pointer border-l-4 border-[#25D366]">
+              <img src={whatsapp} alt="WhatsApp" className="w-6 h-6" />
+              <span className="font-medium text-[#25D366]">Include WhatsApp Data</span>
+              <input
+                type="checkbox"
+                checked={includeWhatsapp}
+                onChange={() => setIncludeWhatsapp(!includeWhatsapp)}
+                className="ml-auto w-5 h-5 accent-[#25D366]"
+              />
+            </label>
 
-          <label className="flex items-center mb-2">
-            <input
-              type="checkbox"
-              checked={includeTelegram}
-              onChange={() => setIncludeTelegram(!includeTelegram)}
-              className="mr-2"
-            />
-            Include Telegram Data
-          </label>
+            {/* Telegram */}
+            <label className="flex items-center gap-3 p-4 bg-cyan-50 rounded-lg hover:shadow-md transition-all cursor-pointer border-l-4 border-[#0088cc]">
+              <img src={telegram} alt="Telegram" className="w-6 h-6" />
+              <span className="font-medium text-[#0088cc]">Include Telegram Data</span>
+              <input
+                type="checkbox"
+                checked={includeTelegram}
+                onChange={() => setIncludeTelegram(!includeTelegram)}
+                className="ml-auto w-5 h-5 accent-[#0088cc]"
+              />
+            </label>
 
-          <label className="flex items-center mb-2">
-            <input
-              type="checkbox"
-              checked={includeFacebook}
-              onChange={() => setIncludeFacebook(!includeFacebook)}
-              className="mr-2"
-            />
-            Include Facebook Data
-          </label>
-
-          <label className="flex items-center mb-2">
-            <input
-              type="checkbox"
-              checked={includeThreads}
-              onChange={() => setIncludeThreads(!includeThreads)}
-              className="mr-2"
-            />
-            Include Threads Data
-          </label>
+            {/* Facebook */}
+            <label className="flex items-center gap-3 p-4 bg-blue-100 rounded-lg hover:shadow-md transition-all cursor-pointer border-l-4 border-[#4267B2]">
+              <img src={facebook} alt="Facebook" className="w-6 h-6" />
+              <span className="font-medium text-[#4267B2]">Include Facebook Data</span>
+              <input
+                type="checkbox"
+                checked={includeFacebook}
+                onChange={() => setIncludeFacebook(!includeFacebook)}
+                className="ml-auto w-5 h-5 accent-[#4267B2]"
+              />
+            </label>
+          </div>
         </div>
+
+
 
         {includeTwitter && (
           <div id="twitter-chart">
@@ -252,15 +246,10 @@ const AnalysisPage: React.FC = () => {
             <FacebookCharts data={facebookData} />
           </div>
         )}
-        {includeThreads && (
-          <div id="threads-chart">
-            <ThreadsCharts data={threadsData} />
-          </div>
-        )}
       </div>
 
       <div className='flex items-center justify-center'>
-        <button onClick={downloadPDF} className="md:w-60 bg-gradient-to-r from-slate-500 to-slate-700 text-white font-bold py-3 px-6 rounded-lg mt-3 transition-transform transform hover:scale-105 hover:shadow-xl shadow-[#F97316]/50">
+        <button onClick={downloadPDF} className="md:w-60 bg-[#ea580c] text-white text-lg font-bold hover:bg-orange-600 transition-all shadow-md hover:shadow-lg py-3 px-6 rounded-lg mt-3 transform hover:scale-105 shadow-[#F97316]/50">
           Download as PDF
         </button>
       </div>

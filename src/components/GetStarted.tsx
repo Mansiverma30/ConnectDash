@@ -10,7 +10,6 @@ const GetStarted: React.FC = () => {
   const [facebook, setFacebook] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [telegram, setTelegram] = useState('');
-  const [threads, setThreads] = useState('');
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [inputField, setInputField] = useState<string | null>(null);
 
@@ -52,10 +51,7 @@ const GetStarted: React.FC = () => {
         setTelegram(value);
         filteredSuggestions = filterField('telegram_number');
         break;
-      case 'threads':
-        setThreads(value);
-        filteredSuggestions = filterField('threads_username');
-        break;
+
       default:
         break;
     }
@@ -71,7 +67,7 @@ const GetStarted: React.FC = () => {
     setFacebook(suggestion.facebook_username);
     setWhatsapp(suggestion.whatsapp_number);
     setTelegram(suggestion.telegram_number);
-    setThreads(suggestion.threads_username);
+
     setSuggestions([]);
   };
 
@@ -80,7 +76,6 @@ const GetStarted: React.FC = () => {
       (user: any) =>
         user.twitter_username === twitter ||
         user.instagram_username === instagram ||
-        user.threads_username === threads ||
         user.facebook_username === facebook
     );
 
@@ -91,9 +86,8 @@ const GetStarted: React.FC = () => {
       setFacebook(matchingUser.facebook_username);
       setWhatsapp(matchingUser.whatsapp_number);
       setTelegram(matchingUser.telegram_number);
-      setThreads(matchingUser.threads_username);
     }
-  }, [twitter, instagram, threads, facebook]);
+  }, [twitter, instagram, facebook]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -105,8 +99,7 @@ const GetStarted: React.FC = () => {
       twitter,
       facebook,
       whatsapp,
-      telegram,
-      threads,
+      telegram
     };
 
     localStorage.setItem('userData', JSON.stringify(userData));
@@ -158,7 +151,6 @@ const GetStarted: React.FC = () => {
               { id: 'facebook', label: 'Facebook Username', value: facebook, setter: setFacebook },
               { id: 'whatsapp', label: 'WhatsApp Phone Number', value: whatsapp, setter: setWhatsapp },
               { id: 'telegram', label: 'Telegram Phone Number', value: telegram, setter: setTelegram },
-              { id: 'threads', label: 'Threads Username', value: threads, setter: setThreads },
             ].map(({ id, label, value, setter }) => (
               <div key={id}>
                 <label htmlFor={id} className="block text-[#1c1917] font-medium">

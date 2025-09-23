@@ -14,7 +14,7 @@ import Features from './components/Features';
 import GetStarted from './components/GetStarted';
 import Contact from './components/Contact'
 import Analysis from "./components/Analysis/AnalysisPage";
-/* import Example from './components/Example' */
+import Example from './components/Example'
 
 
 const router = createBrowserRouter(
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="features" element={<Features />} />
       <Route path="contact" element={<Contact />} />
-      {/* <Route path="example" element={<Example />} /> */}
+      <Route path="example" element={<Example />} />
       <Route path="get-started" element={<GetStarted />} />
       <Route path="analysis" element={<Analysis />} />
     </Route>
