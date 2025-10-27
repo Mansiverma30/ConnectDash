@@ -21,7 +21,6 @@ ConnectDash is an automated social media analysis tool designed to enhance the a
   - `@heroicons/react`: ^2.1.5
   - `@material-tailwind/react`: ^2.1.10
   - `autoprefixer`: ^10.4.20
-  - `axios`: ^1.7.7
   - `chart.js`: ^4.4.4
   - `class-variance-authority`: ^0.7.0
   - `clsx`: ^2.1.1
